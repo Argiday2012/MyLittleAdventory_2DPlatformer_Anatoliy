@@ -1,0 +1,61 @@
+Player
+- MovementSpeed
+- JumpPower
+- HealthPoint
+- LivesCount
+- ActiveWeapon - WeaponBehaviour
+- Skin
+- *OnPlayerDeathEvent
+
+
+
+
+
+EnemyType
+{
+	Zombie;
+}
+
+EnemyStaticData
+- EnemyType
+- movementSpeed
+- WeaponType
+- HealthPoint
+
+
+EnemyBehavior
+- EnemyStaticData
+-- Movement()
+- *OnEnemyDeathEvent
+
+
+
+WeapontType
+{
+	Sword,
+	Stone
+}
+
+WeaponBehavior
+- WeaponStaticData
+
+ParticleType
+{
+	SwordImpact,
+	StoneImpact
+}
+Particles
+
+Sound
+- PunchEnemy
+- Jump
+- Movement
+
+
+- GameManger
+-- StartLevel()
+
+- LevelManager
+	-* OnPlayerDeathHandler()
+	-* OnEnemyDeathHandelr()
+
