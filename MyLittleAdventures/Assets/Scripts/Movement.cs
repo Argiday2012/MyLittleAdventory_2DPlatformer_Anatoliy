@@ -9,13 +9,21 @@ public class Movement : MonoBehaviour
     private Vector3 dir = new Vector3(0, 0, 0);
     private bool flipRight = true;
     private bool inAir;
+
     //private bool isGrounded;
     private Rigidbody2D rb;
+    private Animator _anim;
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        _anim = GetComponent<Animator>();
+    }
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        
+        
     }
 
     private void flip()
@@ -36,6 +44,9 @@ public class Movement : MonoBehaviour
     //}
     private void Update()
     {
+        
+
+
         if(Input.GetButtonDown("Jump") && !inAir)
         {
             inAir = true;
@@ -43,13 +54,16 @@ public class Movement : MonoBehaviour
         }
 
         dir.x = Input.GetAxis("Horizontal") * Speed;
+
         
+
     }
 
     private void FixedUpdate()
     {
         
         transform.position += dir * Time.fixedDeltaTime;
+        _anim.SetFloat("Velocity", Input.GetAxis("Horizontal"));
         if (dir.x > 0 && flipRight != true)
         {
             flip();
@@ -58,6 +72,7 @@ public class Movement : MonoBehaviour
         {
             flip();
         }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
