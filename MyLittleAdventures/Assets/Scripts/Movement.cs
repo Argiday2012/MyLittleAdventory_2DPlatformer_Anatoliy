@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    private const string Jump = "Jump";
     public float Speed;
     public float JumpForce;
     private Vector3 dir = new Vector3(0, 0, 0);
@@ -51,11 +52,10 @@ public class Movement : MonoBehaviour
         {
             inAir = true;
             jump();
+            Idle_Walk_JumpAnimation();
         }
 
         dir.x = Input.GetAxis("Horizontal") * Speed;
-
-        
 
     }
 
@@ -75,11 +75,24 @@ public class Movement : MonoBehaviour
         
     }
 
+    private void Idle_Walk_JumpAnimation()
+    {
+        _anim.Play("Jump");
+    }
+    
+
+
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             inAir = false;
+        }
+        else if(collision.gameObject.layer != LayerMask.NameToLayer("Ground"))
+        {
+            Idle_Walk_JumpAnimation();
         }
     }
 }
