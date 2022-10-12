@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    [SerializeField] AudioSource walking;
     private const string Jump = "Jump";
     public float Speed;
     public float JumpForce;
@@ -46,8 +47,6 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         
-
-
         if(Input.GetButtonDown("Jump") && !inAir)
         {
             inAir = true;
@@ -56,7 +55,7 @@ public class Movement : MonoBehaviour
         }
 
         dir.x = Input.GetAxis("Horizontal") * Speed;
-
+        SoundWalking();
     }
 
     private void FixedUpdate()
@@ -64,6 +63,7 @@ public class Movement : MonoBehaviour
         
         transform.position += dir * Time.fixedDeltaTime;
         _anim.SetFloat("Velocity", Input.GetAxis("Horizontal"));
+        
         if (dir.x > 0 && flipRight != true)
         {
             flip();
@@ -81,7 +81,17 @@ public class Movement : MonoBehaviour
     }
     
 
-
+    private void SoundWalking()
+    {
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            walking.Play();
+        }
+        else
+        {
+            walking.Stop();
+        }
+    }
 
 
     private void OnCollisionEnter2D(Collision2D collision)
