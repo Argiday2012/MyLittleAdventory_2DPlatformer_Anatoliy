@@ -7,6 +7,7 @@ public class StoneBehaviour : MonoBehaviour
     [SerializeField] private float speed = 3f;
     [SerializeField] private float lifeTime = 3f;
     [SerializeField] private Movement _movement;
+    public GameObject Enemy;
 
     private void Start()
     {
@@ -16,5 +17,14 @@ public class StoneBehaviour : MonoBehaviour
     private void Update()
     {
             transform.position += transform.right * speed * Time.deltaTime;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            Debug.Log("Yes");
+            Destroy(gameObject);
+        }
     }
 }

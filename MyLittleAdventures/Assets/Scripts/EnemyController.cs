@@ -48,4 +48,12 @@ public class EnemyController : MonoBehaviour
     {
         rb.velocity = new Vector2(0, 0);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }

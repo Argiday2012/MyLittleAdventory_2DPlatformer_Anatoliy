@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4682684163978920732}
   - component: {fileID: 4842546492491752250}
   - component: {fileID: -3928320917093389118}
-  m_Layer: 0
+  - component: {fileID: -5114845766785816956}
+  m_Layer: 9
   m_Name: Modernstone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,3 +100,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   lifeTime: 3
+  _movement: {fileID: 0}
+  Enemy: {fileID: 317097984471959196, guid: 0bdd22e0fc16ca14d8fea90adf9a69a7, type: 3}
+--- !u!61 &-5114845766785816956
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5583448895801145235}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.91264236, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 8.03, y: 5.3}
+    newSize: {x: 8.03, y: 5.3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 6.204715, y: 5.3}
+  m_EdgeRadius: 0
