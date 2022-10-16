@@ -5,7 +5,10 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public Transform hero;
+    public Transform Hero;
+
+    public float Speed;
+    public float DistToHero;
 
     private void Start()
     {
@@ -14,7 +17,35 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        float distanceToPlayer = Vector2.Distance(transform.position, hero.position);
-        Debug.Log(distanceToPlayer);
+        float distanceToPlayer = Vector2.Distance(transform.position, Hero.position);
+
+        if(distanceToPlayer < DistToHero)
+        {
+            StartFollow();
+        }
+        else
+        {
+            StopFollow();
+        }
+
+    }
+
+    private void StartFollow()
+    {
+        if(Hero.position.x < transform.position.x)
+        {
+            rb.velocity = new Vector2(-Speed, 0 * Time.deltaTime);
+            transform.localScale = new Vector2(0.3f, 0.3f);
+        }
+        else if (Hero.position.x > transform.position.x)
+        {
+            rb.velocity = new Vector2(Speed, 0 * Time.deltaTime);
+            transform.localScale = new Vector2(-0.3f, 0.3f);
+        }
+    }
+
+    private void StopFollow()
+    {
+        rb.velocity = new Vector2(0, 0);
     }
 }

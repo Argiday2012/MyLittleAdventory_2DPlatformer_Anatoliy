@@ -914,7 +914,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362543252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.41, y: -0.58, z: 0}
+  m_LocalPosition: {x: -7.72, y: -0.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -936,7 +936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walking: {fileID: 362543260}
   Speed: 4
-  JumpForce: 5
+  JumpForce: 10
 --- !u!95 &362543258
 Animator:
   serializedVersion: 4
@@ -2057,7 +2057,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6905023966728423116, guid: 0bdd22e0fc16ca14d8fea90adf9a69a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.816017
+      value: 15.66
       objectReference: {fileID: 0}
     - target: {fileID: 6905023966728423116, guid: 0bdd22e0fc16ca14d8fea90adf9a69a7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2632,7 +2632,7 @@ GameObject:
   m_Layer: 0
   m_Name: MapLimit
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4481,4 +4481,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265ca750a0e785b4cafef5c98d631628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hero: {fileID: 362543256}
+  Hero: {fileID: 362543256}
+  Speed: 2
+  DistToHero: 17
