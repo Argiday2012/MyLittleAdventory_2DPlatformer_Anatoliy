@@ -6,7 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     private Rigidbody2D rb;
     public Transform Hero;
-
+    [SerializeField] private float _health;
     public float Speed;
     public float DistToHero;
 
@@ -19,7 +19,7 @@ public class EnemyController : MonoBehaviour
     {
         float distanceToPlayer = Vector2.Distance(transform.position, Hero.position);
 
-        if(distanceToPlayer < DistToHero)
+        if (distanceToPlayer < DistToHero)
         {
             StartFollow();
         }
@@ -28,11 +28,16 @@ public class EnemyController : MonoBehaviour
             StopFollow();
         }
 
+        if(_health <= 0)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     private void StartFollow()
     {
-        if(Hero.position.x < transform.position.x)
+        if (Hero.position.x < transform.position.x)
         {
             rb.velocity = new Vector2(-Speed, 0 * Time.deltaTime);
             transform.localScale = new Vector2(0.3f, 0.3f);
@@ -49,11 +54,16 @@ public class EnemyController : MonoBehaviour
         rb.velocity = new Vector2(0, 0);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void TakeDamage(int Damage)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
-        {
-            Destroy(gameObject);
-        }
+        _health -= Damage;
     }
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if(collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
 }

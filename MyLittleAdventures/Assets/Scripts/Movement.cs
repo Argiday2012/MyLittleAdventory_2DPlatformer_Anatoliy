@@ -51,11 +51,20 @@ public class Movement : MonoBehaviour
         {
             inAir = true;
             jump();
-            Idle_Walk_JumpAnimation();
+            _anim.SetBool("isJump", true);
+            //Idle_Walk_JumpAnimation();
+        }
+        else
+        {
+            if(inAir == false)
+            {
+                _anim.SetBool("isJump", false);
+            }
         }
 
         dir.x = Input.GetAxis("Horizontal") * Speed;
         SoundWalking();
+
     }
 
     private void FixedUpdate()
@@ -75,10 +84,10 @@ public class Movement : MonoBehaviour
         
     }
 
-    private void Idle_Walk_JumpAnimation()
-    {
-        _anim.Play("Jump");
-    }
+    //private void Idle_Walk_JumpAnimation()
+    //{
+    //    _anim.Play("Jump");
+    //}
     
 
     private void SoundWalking()
@@ -99,10 +108,12 @@ public class Movement : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             inAir = false;
+            //_anim.SetBool("isJump", false);
         }
         else if(collision.gameObject.layer != LayerMask.NameToLayer("Ground"))
         {
-            Idle_Walk_JumpAnimation();
+            //Idle_Walk_JumpAnimation();
+            //_anim.SetBool("isJump", true);
         }
     }
 }

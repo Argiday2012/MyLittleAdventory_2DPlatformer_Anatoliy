@@ -9,10 +9,10 @@ public class ShootStonePosition : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            Fire();
-        }
+        //if(Input.GetKeyDown(KeyCode.Mouse1))
+        //{
+        //    Fire();
+        //}
     }
 
     private void Fire()
