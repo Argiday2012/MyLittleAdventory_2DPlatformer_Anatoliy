@@ -14,7 +14,7 @@ public class HeroFight : MonoBehaviour
 
     private void Update()
     {
-        if(_timeBtwAttack <= 0)
+        if (_timeBtwAttack <= 0)
         {
             if(Input.GetKey(KeyCode.G))
             {
@@ -33,9 +33,10 @@ public class HeroFight : MonoBehaviour
         
     }
 
-    void OnDrawGizmosSelected()
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_attackPos.position, _attackRange);
+        Debug.Log("Yes");
     }
 }
